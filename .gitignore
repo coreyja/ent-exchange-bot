@@ -33,3 +33,6 @@ build/
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
+
+# Ignore the secrets.env file which contains the auth ENV vars for development
+secrets.env
