@@ -61,7 +61,7 @@ class EntExchangeBot
 	end
 
 	def flair_post
-		@flair_post ||= sub.search('Sticky: Flair guide! Post your transactions here for Flair!', sort: :new, limit: 1).first
+		@flair_post ||= sub.search('Post your transactions here for Flair!', sort: :new, limit: 1).first
 	end
 
 	def flair_requests
