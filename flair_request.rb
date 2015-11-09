@@ -34,7 +34,9 @@ class FlairRequest
 	end
 
 	def give_flair
-		# TODO: Leaving this till last so I can get all the states correct first
+		[@exchanger, @requester].map do |username|
+			User.new(@bot, username).give_flair
+		end
 	end
 
 	def confirmation_request

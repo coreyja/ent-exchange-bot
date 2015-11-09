@@ -1,17 +1,25 @@
 require 'Redd'
 require 'pry'
+require 'logger'
 
 require './flair_request.rb'
+require './user.rb'
 
 class EntExchangeBot
 	def initialize(sub_name)
 		@sub_name = sub_name
 		@username = ENV["REDDIT_USERNAME"]
+
+		@logger = Logger.new('bot.log', 10, 1024000)
 	end
 
 
 	def do_flair
+		logger.info "Started Flair Run at #{Time.now}"
+
 		flair_requests.each(&:do)
+
+		logger.info "Ended Flair Run at #{Time.now}"
 
 		nil
 	end
@@ -27,7 +35,19 @@ class EntExchangeBot
 	def username_mention
 		"/u/#{username}"
 	end
-	
+
+	def sub
+		@sub ||= r.subreddit_from_name @sub_name
+	end
+
+	def get_user(username)
+		r.user_from_name username
+	end
+
+	def logger
+		@logger
+	end
+
 	private
 	
 	def r
@@ -36,10 +56,6 @@ class EntExchangeBot
 			@r.authorize!
 		end
 		@r
-	end
-
-	def sub
-		@sub ||= r.subreddit_from_name @sub_name
 	end
 
 	def flair_post
@@ -52,5 +68,3 @@ class EntExchangeBot
 		end.compact
 	end
 end
-
-# binding.pry

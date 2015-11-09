@@ -36,3 +36,5 @@ build/
 
 # Ignore the secrets.env file which contains the auth ENV vars for development
 secrets.env
+
+*.log
