@@ -29,7 +29,7 @@ class UserFlairUpdater
 
 		updated_flair = "#{options[:adjective]}: #{options[:num]} Successful Trade#{'s' if options[:num] > 1}"
 		self.flair_text = updated_flair
-		@bot.logger.info = "Updated Flair for #{@username} to " + updated_flair
+		@bot.logger.info "Updated Flair for #{@username}: " + updated_flair
 	end
 
 	private
