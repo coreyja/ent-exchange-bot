@@ -27,7 +27,9 @@ class UserFlairUpdater
 			end
 		end
 
-		self.flair = "#{options[:adjective]}: #{options[:num]} Successful Trade#{'s' if options[:num] > 1}"
+		updated_flair = "#{options[:adjective]}: #{options[:num]} Successful Trade#{'s' if options[:num] > 1}"
+		self.flair_text = updated_flair
+		@bot.logger.info = "Updated Flair for #{@username} to " + updated_flair
 	end
 
 	private
@@ -36,7 +38,7 @@ class UserFlairUpdater
 		@bot.logger.error "Failed to update flair for user #{@username}. Flair text didn't match regex. Flair text: #{flair_text}"
 	end
 
-	def flair=(flair_text)
+	def flair_text=(flair_text)
 		css_string = flair? ? flair[:flair_css_class] : ''
 		@bot.sub.set_flair @username, :user, flair_text, css_string
 	end

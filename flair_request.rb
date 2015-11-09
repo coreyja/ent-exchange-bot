@@ -26,11 +26,13 @@ class FlairRequest
 
 	def request_confirmation
 		 @comment.reply confirmation_request_comment_text
+		 @bot.logger.info "Requested confirmation from #{exchanger} for a trade with #{requester}"
 	end
 
 	def complete
 		give_flair
 		@comment.reply complete_comment_text
+		@bot.logger.info "Flair updated for #{exchanger} and #{requester} and comment left"
 	end
 
 	def give_flair
