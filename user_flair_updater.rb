@@ -53,6 +53,6 @@ class UserFlairUpdater
 	end
 
 	def flair?
-		!flair.nil? && !flair[:flair_text].nil? && flair[:flair_text].present?
+		!flair.nil? && !flair[:flair_text].nil? && !flair[:flair_text].empty?
 	end
 end
