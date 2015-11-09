@@ -1,1 +1,1 @@
-clock: ruby do_flair.rb
+flair: ruby do_flair.rb
