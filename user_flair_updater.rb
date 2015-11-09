@@ -1,4 +1,4 @@
-class User
+class UserFlairUpdater
 
 	FORMATTED_FLAIR_REGEX = /^([\w -]*) ?[:-] *(\d*) Succ?ess?ful (?:Trade|Exchange)/i
 	FLAIR_REGEX = /Verified Exchanger/i
@@ -33,9 +33,7 @@ class User
 	private
 
 	def log_failure
-		text = "Failed to update flair for user #{@username}. Flair text didn't match regex. Flair text: #{flair_text}"
-		@bot.logger.error text
-		@bot.sub.send_message 'Failed to Update Flair', text
+		@bot.logger.error "Failed to update flair for user #{@username}. Flair text didn't match regex. Flair text: #{flair_text}"
 	end
 
 	def flair=(flair_text)

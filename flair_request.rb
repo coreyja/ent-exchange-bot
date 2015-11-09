@@ -35,7 +35,7 @@ class FlairRequest
 
 	def give_flair
 		[@exchanger, @requester].map do |username|
-			User.new(@bot, username).give_flair
+			UserFlairUpdater.new(@bot, username).give_flair
 		end
 	end
 

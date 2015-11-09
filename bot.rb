@@ -1,16 +1,18 @@
 require 'Redd'
 require 'pry'
-require 'logger'
+
 
 require './flair_request.rb'
-require './user.rb'
+require './user_flair_updater.rb'
+require './logger.rb'
 
 class EntExchangeBot
 	def initialize(sub_name)
 		@sub_name = sub_name
 		@username = ENV["REDDIT_USERNAME"]
 
-		@logger = Logger.new('bot.log', 10, 1024000)
+		@logger = EntExchangeLogger.new('bot.log', 10, 1024000)
+		@logger.sub = sub
 	end
 
 
