@@ -1,4 +1,4 @@
-require 'Redd'
+require 'redd'
 require 'pry'
 
 
