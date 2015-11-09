@@ -11,7 +11,7 @@ class EntExchangeBot
 		@sub_name = sub_name
 		@username = ENV["REDDIT_USERNAME"]
 
-		@logger = EntExchangeLogger.new('bot.log', 10, 1024000)
+		@logger = EntExchangeLogger.new(STDOUT)
 		@logger.sub = sub
 	end
 
