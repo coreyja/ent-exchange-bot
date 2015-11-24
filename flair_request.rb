@@ -1,7 +1,7 @@
 class FlairRequest
 
 	LINK_REGEX = /^link\s*[:=]?\s*(.+)/i
-	EXCHANGER_REGEX = /^(?:trade(?:d|r)|exchange(?:d|r))(?: with)?\s*[:=]?\s*(?:\/?u\/)?(.+)/i
+	EXCHANGER_REGEX = /^(?:trade(?:d|r)|exchange(?:d|r))(?: with)?\s*[:=]?\s*(?:(?:https?:\/\/)?(?:www.)?reddit.com\/user\/)?(?:\/?u\/)?(.+)/i
 
 	CONFIRMED_REGEX = /confirmed/i
 	CONFIRMATION_REQUESTED_REGEX = /thank you for submitting a flair request/
@@ -81,7 +81,7 @@ To complete this flair request I need to have the exchanger, /u/#{@exchanger}, c
 
 /u/#{@exchanger}, please simply reply to either this comment or the parent comment, with the word "Confirmed" to confirm the trade took place and was successful.
 
-Once this trade is confirmed I will give both parties flair. 
+Once this trade is confirmed I will give both parties flair.
 
 Thanks!
 
