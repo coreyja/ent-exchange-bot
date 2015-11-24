@@ -51,7 +51,7 @@ class EntExchangeBot
 	end
 
 	private
-	
+
 	def r
 		if @r.nil?
 			@r = Redd.it(:script, ENV["REDDIT_CLIENT_ID"], ENV["REDDIT_SECRET"], ENV["REDDIT_USERNAME"], ENV["REDDIT_PASSWORD"], user_agent: "EntExhcangeBot v0.0.1")
@@ -60,12 +60,12 @@ class EntExchangeBot
 		@r
 	end
 
-	def flair_post
-		@flair_post ||= sub.search('Post your transactions here for Flair!', sort: :new, limit: 1).first
+	def flair_posts
+		@flair_posts ||= sub.search('Post your transactions here for Flair!', sort: :new, limit: 3)
 	end
 
 	def flair_requests
-		@flair_requests ||= flair_post.comments.map do |comment|
+		@flair_requests ||= flair_posts.flat_map(&:comments).map do |comment|
 			FlairRequest.new(self, comment) if comment.body =~ /^flair request/i
 		end.compact
 	end
